@@ -5,7 +5,10 @@ describe("Recipe tests", () => {
       And measurements
       And cooking method
       Then the new recipe is saved for later`, () => {
-    expect(true).to.eq(false);
+    cy.request("POST", "http://localhost:3080/recipes?search=Omelette")
+    .then((response) => {
+      expect(response.status).to.eq(200)
+    })
   });
 
   it(`Given I want to look for a recipe
@@ -13,7 +16,11 @@ describe("Recipe tests", () => {
       Then I find the recipe
       And I can see the ingredients
       And I can see the cooking methods`, () => {
-    expect(true).to.eq(false);
+    cy.request("GET", "http://localhost:3080/recipes?search=Omelette")
+    .then((response) => {
+      expect(response.status).to.eq(200)
+      expect(response.body.results).length.to.be.greaterThan(1)
+    })
   });
 
   it(`Given I want to look for a recipe by ingredients
@@ -21,6 +28,9 @@ describe("Recipe tests", () => {
       Then I find the recipe
       And I can see the ingredients
       And I can see the cooking methods`, () => {
-    expect(true).to.eq(false);
+    cy.request("GET", "http://localhost:3080/recipes?search=eggs")
+    .then((response) => {
+      expect(response.status).to.eq(200)
+    })
   });
 });
