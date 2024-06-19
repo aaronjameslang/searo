@@ -11,10 +11,24 @@ export const RecipeCardForm = (props: RecipeCardFormProps) => {
   const setTitle = (title: string) => setRecipe({ ...recipe, title });
   const setBody = (body: string) => setRecipe({ ...recipe, body });
   return (
-    <form>
+    <form style={style}>
       <input type="text" placeholder="Recipe Title" onChange={(e) => setTitle(e.target.value)} />
-      <textarea placeholder="Recipe Body" onChange={(e) => setBody(e.target.value)} />
+      <textarea style={textareaStyle} placeholder="Recipe details..." onChange={(e) => setBody(e.target.value)} />
       <button onClick={() => onSave(recipe)}>Save</button>
     </form>
   );
 };
+
+const style = {
+  maxWidth: "800px",
+display: "flex",
+justifyContent: "center",
+ alignItems: "center",
+ flexDirection: "column",
+ margin: "auto",
+} as const
+
+const textareaStyle = {
+  minWidth: "400px",
+  minHeight: "200px",
+}

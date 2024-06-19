@@ -3,6 +3,10 @@ describe("User Interface", () => {
     cy.visit('http://localhost:3000/')
     cy.get('h1').should('contain', '🍲 Searo')
   })
+  it ('Create page contains button', () => {
+    cy.visit('http://localhost:3000/create')
+    cy.get('button').should('exist')
+  })
   // it(`Given I have a new recipe
   //     When I add the new recipe name
   //     And ingredients

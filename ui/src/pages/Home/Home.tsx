@@ -24,4 +24,4 @@ justifyContent: "center",
  alignItems: "center",
  flexDirection: "column",
  margin: "auto",
-}
+} as const

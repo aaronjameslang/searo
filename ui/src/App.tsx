@@ -2,6 +2,7 @@ import "./App.css";
 
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
+import { CreatePage } from "./pages/Create";
 import { Home } from "./pages/Home/Home";
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/create" component={CreatePage} />
         </Switch>
       </Router>
     </div>
