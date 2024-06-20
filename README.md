@@ -1,83 +1,86 @@
-# Recipe app
-## Introduction
-Feel free to [use this repository as a template](../../generate) (Please don't fork!) or start from scractch.
+# 🍲 Searo
 
-The requirement is to build and end to end application consisting of a Typescript, React webapp, a Typescript API and a data store of your choice.
-The spec below defines 3 user stories all with acceptance criteria. Do your best to interpret them and implement them. If you feel you're missing context, drop an email to tech-test@sero.life.
+_Your favourite recipes, hot to go_
 
-Could you provide a GitHub repository link with your work when you feel you've completed the task to tech-test@sero.life?
+Searo is a simple recipe management application, created in response to
+a coding challenge. Your can view the original breif
+[here](https://github.com/SeroLife/typescript-fullstack-tech-test).
 
-## How to run the app
+It is deliberately very minimal, aiming to provide an MVP that does not
+exceed the stated requirements prior to stakeholder review.
 
-Open a terminal and run the following command to spin up the API and React UI
+## Getting started
 
-```
-make install docker
-```
+Install and run the app with `make install docker`.
 
-_Navigate to http://localhost:3000 to view the UI_
+Navigate to http://localhost:3000 to view the UI.
 
-## How to run the tests
+Once the app is running you can run end-to-end tests with `make test`.
 
-Run the following command in a separate terminal (You must have your UI and API running)
+## Features
 
-```
-make test
-```
+Users can add new recipes, which are stored for later.
 
-## Build an app for a chef to store their favorite recipes.
-Ideal tech stack:
+Users can search for and view previously added recipes.
+Search terms can be recipe titles or ingredients.
+
+### Non-functional requirements
+
+- Run the whole stack with `make install docker`
+- Data is persisted when database is stopped and started
+- End to end tests demonstrate acceptance criteria has been implemented
+- Continuous integration
+- App deployment
+
+## Tech Stack
 - Typescript
 - React
 - Cypress
 - Docker
+- SQLite
 
-## Non-functional requirements
-- Run the whole stack with `make install docker`
-- Data is persisted when database is stopped and started
-- End to end tests demonstrate acceptance criteria has been implemented
+## Design decisions
 
+SQLite was chosen as the fastest to implement for MVP. It will likely
+not scale and should be easy enough to swap out for MySQL in time.
 
-## Saving favorite recipes
-### User story 1
-As a chef
-I want to save my favorite recipes\
-So that I can cook them another time
+Each recipe is modelled as two strings, a title and a body. This gives
+the user the most flexibility in how they want to lay out their recipe,
+and is very simple to implement. In future we may wish to add rich text
+formatting to the body.
 
-### Acceptance criteria 1
-Given I have a new recipe\
-When I add the new recipe name\
-And ingredients\
-And measurements\
-And cooking method\
-Then the new recipe is saved for later
- 
-## Searching favorite recipes by name
-### User story 2
-As a chef\
-I want to search for my favorite recipe\
-So that I can cook it
+## Outstanding context questions
 
-### Acceptance criteria 2
-Given I want to look for a recipe\
-When I search by the name of the recipe\
-Then I find the recipe\
-And I can see the ingredients\
-And I can see the cooking methods
- 
-## Searching favorite recipes by ingredients (Optional)
-### User story 3
-As a chef\
-I want to search for my favorite recipe by ingredient\
-So that I can cook it
+- How does this project contribute to the company's goals?
+- Do we intend to monetise this? If so, how?
+- How will we differentiate ourselves from competitors? What's our USP?
+- What do our competitors do better than us?
+- Who are our target audience?
+- What browsers/formats do we want to support?
+- How will we measure success? Page views, scroll depth, dwell time, user reviews, etc
 
-### Acceptance criteria 3
-Given I want to look for a recipe by ingredients\
-When I search by the ingredient of the recipe\
-Then I find the recipe\
-And I can see the ingredients\
-And I can see the cooking methods
+## TODOs
 
-## Bonus points (Optional)
-1. Continuous integration
-2. App deployment
+Functional and non-functional considerations before this goes to production
+
+- Test on mobile, and across a number of browsers
+- Run lighthouse and address any valid concerns, document any outstanding issues
+- Get a product designer to give feedback on the design, the MVP is utilitarian
+- Add monitoring, FE & BE, such as sentry or new relic
+- Automate test coverage, add more tests as requried
+- Ensure application meets accessibility guidelines
+- Ensure the application is secure, review OWASP top ten, run static analysis, potentially hire pen testers
+- Set up HTTPs
+- Measure application performance and bottlenecks, plan for scale, but do not prematurely optimise
+- Page search results, to prevent very large payloads causing performance issues
+- Add API validation, to prevent bugs and reduce security vulnerabilty
+- Make recipe bodies collapsible, so long lists are easier to navigate
+- Perhaps allow users to attach images?
+- Add account management and login system, so multiple users can share one tenant
+- Add formatting controls on input form, such as font size etc, but beware script injection etc
+- Potentially move the whole system serverless (S3/Lambda/DyanmoDB)? Docker feels like overkill for a crud app, but depends what infra the team/org is most familiar with maintaining. Running costs of various options should be compared, along with ease of scaling.
+- Make the app offline friendly (PWA) with webworkers
+- Branch/merge protections, rquire PR approval and CI pass
+- Review documentation, improve where necessary
+- Internationalise? Are we unicode safe? Can we handle flambé?
+- Add user monitoring for metrics such as scroll depth, dead clicks, etc. Consider fullstory.
