@@ -18,7 +18,7 @@ export const Home = () => {
       <div>
       <input type="text" placeholder="Search recipes" onChange={e => setTerm(e.target.value)} value={term}/>
       <button>🔎</button>
-      <button>➕</button>
+      <a href="/create" id="create-button"><button>➕</button></a>
       </div>
       <RecipeCardList recipes={recipes} />
     </div>

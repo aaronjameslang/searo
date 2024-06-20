@@ -7,17 +7,23 @@ describe("User Interface", () => {
     cy.visit('http://localhost:3000/create')
     cy.get('button').should('exist')
   })
-  // it(`Given I have a new recipe
-  //     When I add the new recipe name
-  //     And ingredients
-  //     And measurements
-  //     And cooking method
-  //     Then the new recipe is saved for later`, () => {
-  //   cy.request("POST", "http://localhost:3080/recipes?search=Omelette")
-  //   .then((response) => {
-  //     expect(response.status).to.eq(200)
-  //   })
-  // });
+
+  it(`Given I have a new recipe
+      When I add the new recipe name
+      And ingredients
+      And measurements
+      And cooking method
+      Then the new recipe is saved for later`,
+    () => {
+      const recipe = genTestRecipe()
+      cy.visit('http://localhost:3000')
+      cy.get('#create-button').should('exist').click()
+      cy.get('#title-input').type(recipe.title)
+      cy.get('#body-input').type(recipe.body)
+      cy.get('button').click()
+      cy.get('body').should('contain', recipe.title)
+    }
+  );
 
   // it(`Given I want to look for a recipe
   //     When I search by the name of the recipe

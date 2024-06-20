@@ -1,10 +1,17 @@
 import { RecipeCardForm } from "../components/RecipeCardForm";
+import { Recipe } from "../lib/Recipe";
 
 export const CreatePage = () => {
   // TODO clicking title should navigate to home
-  function onSave() {
-    // post to backend
-    // redirect to home with pre-loaded search term
+  async function onSave(recipe: Recipe) {
+    await fetch("http://localhost:3080/recipes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(recipe)
+    })
+    window.location.href = "/" // pre-search for just added entry?
   }
   return (
     <div style={style}>
