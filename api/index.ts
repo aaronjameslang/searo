@@ -1,7 +1,7 @@
 import { json, urlencoded } from "body-parser";
 import cors from "cors";
 import express, { Request, Response } from "express";
-import { DUMMY_RECIPES } from "./src/Recipe";
+import { getAllRecipes, getRecipes, insertRecipe } from "./src/db/getDb";
 
 const app = express();
 
@@ -23,9 +23,17 @@ export class Application {
 
   setupControllers() {
     app.get("/recipes", (req: Request, res: Response) => {
-      res.status(200).send({ results: DUMMY_RECIPES });
+      const term = req.query.search as string|undefined;
+      const results = term ?
+        getRecipes(term) :
+        getAllRecipes();
+      res.status(200).send({ results, term });
     });
     app.post("/recipes", (req: Request, res: Response) => {
+      // TODO validate request body
+      const { title, body } = req.body;
+      insertRecipe(title, body);
+      // TODO perhaps return recipe id?
       res.status(200).send("");
     });
     app;
