@@ -1,15 +1,35 @@
 on: [push]
 jobs:
-  job:
+  api-job:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
       - uses: actions/checkout@v4
-      - run: echo -n 'Node ' ; node --version
-      - run: echo -n 'NPM ' ; npm --version
-      - run: cd api && npm install && npm test
-      - run: echo TODO lint
-      - run: echo TODO ui tests
-      - run: echo TODO e2e tests
+      - run: cd api && npm install
+      - run: cd api && npm run lint
+      - run: cd api && npm run build
+      - run: cd api && npm test
+  e2e-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/checkout@v4
+      - run: npm install
+      - uses: cypress-io/github-action@v6
+        with:
+          start: make docker
+  ui-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/checkout@v4
+      - run: cd ui && npm install
+      - run: cd ui && npm run lint
+      - run: cd ui && npm run build
+      - run: cd ui && npm test
