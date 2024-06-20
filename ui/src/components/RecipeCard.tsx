@@ -9,7 +9,7 @@ export const RecipeCard = (props: RecipeCardProps) => {
   return (
     <div>
       <h2>{recipe.title}</h2>
-      <p>{recipe.body}</p>
+      <pre>{recipe.body}</pre>
     </div>
   );
 };
