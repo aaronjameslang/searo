@@ -1,0 +1,15 @@
+on: [push]
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/checkout@v4
+      - run: echo -n 'Node ' ; node --version
+      - run: echo -n 'NPM ' ; npm --version
+      - run: cd api && npm install && npm test
+      - run: echo TODO lint
+      - run: echo TODO ui tests
+      - run: echo TODO e2e tests

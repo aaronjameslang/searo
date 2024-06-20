@@ -91,6 +91,6 @@ Functional and non-functional considerations before this goes to production
 - Debounce inputs to prevent search API getting spammed
 - Add static anlysis and duplicate code detection
 - Add a database migration system
-- Document/script to clean/reset the database
 - Bug: Error in network tab when submitting new recipe, does not appear to affect functionality, may be due to lack of HTTPS?
 - Review all everything from the initial template, trim fat and ensure nothing is insecure or misleading
+- Linting

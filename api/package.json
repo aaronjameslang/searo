@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "dev": "ts-node-dev ./index.ts",
+    "test": "jest",
     "reset-db": "ts-node ./src/db/resetDb.ts"
   },
   "license": "ISC",
