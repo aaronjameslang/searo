@@ -1,4 +1,5 @@
-import { getRecipes, insertRecipe } from "./getDb"
+import { getRecipes } from './getRecipes'
+import { insertRecipe } from './insertRecipe'
 
 describe('getRecipes', () => {
     it('returns exact title match', () => {

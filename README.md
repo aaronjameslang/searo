@@ -84,3 +84,13 @@ Functional and non-functional considerations before this goes to production
 - Review documentation, improve where necessary
 - Internationalise? Are we unicode safe? Can we handle flambé?
 - Add user monitoring for metrics such as scroll depth, dead clicks, etc. Consider fullstory.
+- Ensure all technologies and libraries are up to date
+- Check for errors and warning on the terminal and web console during build/run
+- Potentially split up some files which have multiple exports/concerns
+- Implement a FE component libary for a quick and easy face life
+- Debounce inputs to prevent search API getting spammed
+- Add static anlysis and duplicate code detection
+- Add a database migration system
+- Document/script to clean/reset the database
+- Bug: Error in network tab when submitting new recipe, does not appear to affect functionality, may be due to lack of HTTPS?
+- Review all everything from the initial template, trim fat and ensure nothing is insecure or misleading

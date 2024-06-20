@@ -1,7 +1,9 @@
 import { json, urlencoded } from "body-parser";
 import cors from "cors";
 import express, { Request, Response } from "express";
-import { getAllRecipes, getRecipes, insertRecipe } from "./src/db/getDb";
+import { getAllRecipes } from './src/db/getAllRecipes';
+import { getRecipes } from './src/db/getRecipes';
+import { insertRecipe } from './src/db/insertRecipe';
 
 const app = express();
 
