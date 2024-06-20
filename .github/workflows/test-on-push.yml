@@ -13,3 +13,7 @@ jobs:
       - run: echo TODO lint
       - run: echo TODO ui tests
       - run: echo TODO e2e tests
+      - uses: cypress-io/github-action@v6
+        with:
+          build: make install
+          start: make docker
