@@ -22,7 +22,7 @@ export const RecipeCardList = (props: RecipeCardListProps) => {
   const { recipes } = props;
   return (
     <div>
-      {recipes.map((recipe: Recipe) => <RecipeCard recipe={recipe} />)}
+      {recipes.map((recipe: Recipe, i) => <RecipeCard recipe={recipe} key={i} />)}
     </div>
   );
 };
