@@ -25,28 +25,35 @@ describe("User Interface", () => {
     }
   );
 
-  // it(`Given I want to look for a recipe
-  //     When I search by the name of the recipe
-  //     Then I find the recipe
-  //     And I can see the ingredients
-  //     And I can see the cooking methods`, () => {
-  //   cy.request("GET", "http://localhost:3080/recipes?search=Omelette")
-  //   .then((response) => {
-  //     expect(response.status).to.eq(200)
-  //     expect(response.body.results).length.to.be.greaterThan(1)
-  //   })
-  // });
+  it(`Given I want to look for a recipe
+      When I search by the name of the recipe
+      Then I find the recipe
+      And I can see the ingredients
+      And I can see the cooking methods`, () => {
+      const recipe = genTestRecipe()
+      cy.visit('http://localhost:3000')
+      cy.get('#create-button').should('exist').click()
+      cy.get('#title-input').type(recipe.title)
+      cy.get('#body-input').type(recipe.body)
+      cy.get('button').click()
+      cy.get('input').type(recipe.title)
+      cy.get('body').should('contain', recipe.title)
+  });
 
-  // it(`Given I want to look for a recipe by ingredients
-  //     When I search by the ingredient of the recipe
-  //     Then I find the recipe
-  //     And I can see the ingredients
-  //     And I can see the cooking methods`, () => {
-  //   cy.request("GET", "http://localhost:3080/recipes?search=eggs")
-  //   .then((response) => {
-  //     expect(response.status).to.eq(200)
-  //   })
-  // });
+  it(`Given I want to look for a recipe by ingredients
+      When I search by the ingredient of the recipe
+      Then I find the recipe
+      And I can see the ingredients
+      And I can see the cooking methods`, () => {
+      const recipe = genTestRecipe()
+      cy.visit('http://localhost:3000')
+      cy.get('#create-button').should('exist').click()
+      cy.get('#title-input').type(recipe.title)
+      cy.get('#body-input').type(recipe.body)
+      cy.get('button').click()
+      cy.get('input').type(recipe.body)
+      cy.get('body').should('contain', recipe.title)
+  });
 });
 
 // TODO add negative tests, i.e. what if we post a recipe without a title?
@@ -54,7 +61,7 @@ describe("User Interface", () => {
 function genTestRecipe() {
   return {
     title: "Test Tajine #"+Math.random(),
-    body: "Ingredients, etc"
+    body: "Ingredients, etc "+Math.random()
   }
 }
 
@@ -93,20 +100,4 @@ describe("Rest API", () => {
       expect(response.body.results[0].body).equals(recipe.body)
     })
   });
-
-  // it('Searching for Omelette returns results', () => {
-  //   cy.request("GET", "http://localhost:3080/recipes?search=Omelette")
-  //   .then((response) => {
-  //     expect(response.status).to.eq(200)
-  //     expect(response.body.results).length.to.be.greaterThan(1)
-  //   })
-  // });
-
-  // it('Searching for eggs returns results', () => {
-  //   cy.request("GET", "http://localhost:3080/recipes?search=eggs")
-  //   .then((response) => {
-  //     expect(response.status).to.eq(200)
-  //     expect(response.body.results).length.to.be.greaterThan(1)
-  //   })
-  // });
 });

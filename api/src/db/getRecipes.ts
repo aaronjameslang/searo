@@ -3,7 +3,8 @@ import { getDb } from './getDb';
 
 
 export function getRecipes(term: string): Recipe[] {
+    const param = '%' + term + '%';
     return getDb()
-        .prepare(`SELECT * FROM recipes WHERE title LIKE ?`)
-        .all('%' + term + '%') as Recipe[];
+        .prepare(`SELECT * FROM recipes WHERE title LIKE ? OR body LIKE ?`)
+        .all(param, param) as Recipe[];
 }
