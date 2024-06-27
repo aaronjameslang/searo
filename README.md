@@ -95,3 +95,6 @@ Functional and non-functional considerations before this goes to production
 - Review all everything from the initial template, trim fat and ensure nothing is insecure or misleading
 - Linting
 - Formatting e.g. prettier
+- Infrastructure as code, e.g. terraform
+- Docker compose verion is obsolete
+- Set up healthchecks on the servers, and configure AWS
