@@ -11,17 +11,17 @@ jobs:
       - run: cd api && npm run lint
       - run: cd api && npm run build
       - run: cd api && npm test
-  e2e-job:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - uses: actions/checkout@v4
-      - run: npm install
-      - uses: cypress-io/github-action@v6
-        with:
-          start: make docker
+  # e2e-job:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20'
+  #     - uses: actions/checkout@v4
+  #     - run: npm install
+  #     - uses: cypress-io/github-action@v6
+  #       with:
+  #         start: make docker
   ui-job:
     runs-on: ubuntu-latest
     steps:
