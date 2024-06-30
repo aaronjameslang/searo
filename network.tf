@@ -142,14 +142,14 @@ resource "aws_security_group" "egress_all" {
   }
 }
 
-resource "aws_security_group" "ingress_api" { // Do we need this? TODO
+resource "aws_security_group" "ingress_api" {
   name        = "ingress-api"
   description = "Allow ingress to API"
   vpc_id      = aws_vpc.app_vpc.id
 
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 3000
+    to_port     = 3000
     protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }

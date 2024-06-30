@@ -45,7 +45,7 @@ resource "aws_ecs_service" "searo-tf-httpd" {
  load_balancer {
    target_group_arn = aws_lb_target_group.searo_tf_httpd.arn
    container_name   = "searo-tf-httpd"
-   container_port   = "80"
+   container_port   = "3000"
  }
 }
 
@@ -60,10 +60,10 @@ resource "aws_ecs_task_definition" "searo-tf-httpd" {
   [
     {
       "name": "searo-tf-httpd",
-      "image": "public.ecr.aws/t9e1i3s4/searo-httpd:latest",
+      "image": "public.ecr.aws/t9e1i3s4/searo-httpd:p3000-2.4",
       "portMappings": [
         {
-          "containerPort": 80
+          "containerPort": 3000
         }
       ],
       "logConfiguration": {

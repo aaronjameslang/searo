@@ -1,6 +1,6 @@
 resource "aws_lb_target_group" "searo_tf_httpd" {
   name        = "searo-tf-httpd"
-  port        = 80
+  port        = 3000
   protocol    = "HTTP"
   target_type = "ip"
   vpc_id      = aws_vpc.app_vpc.id
@@ -40,6 +40,11 @@ resource "aws_alb_listener" "searo_tf_httpd_http" {
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.searo_tf_httpd.arn
+  }
+
+  lifecycle {
+    // https://github.com/hashicorp/terraform-provider-aws/issues/16889
+    replace_triggered_by = [aws_lb_target_group.searo_tf_httpd]
   }
 }
 
