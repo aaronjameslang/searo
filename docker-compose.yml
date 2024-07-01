@@ -5,9 +5,9 @@ services:
     ports:
       - "3080:3080"
     container_name: recipe-book-api
-    volumes:
-       - ./api:/usr/src/app/api
-       - /usr/src/app/api/node_modules
+    # volumes:
+    #    - ./api:/usr/src/app/api
+    #    - /usr/src/app/api/node_modules
   recipe-book-ui:
     build:
       context: ./ui
