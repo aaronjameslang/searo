@@ -76,7 +76,7 @@ resource "aws_ecs_task_definition" "searo-tf-httpd" {
       },
       "healthCheck": {
         "command": [
-          "CMD",
+          "CMD-SHELL",
           "(wget -O - localhost:3000 | grep html) || exit 1"
         ]
       }
