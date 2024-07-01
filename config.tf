@@ -60,7 +60,7 @@ resource "aws_ecs_task_definition" "searo-tf-httpd" {
   [
     {
       "name": "searo-tf-httpd",
-      "image": "public.ecr.aws/t9e1i3s4/searo-httpd:p3000-2.4",
+      "image": "public.ecr.aws/t9e1i3s4/searo:ui",
       "portMappings": [
         {
           "containerPort": 3000
