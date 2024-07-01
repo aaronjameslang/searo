@@ -5,10 +5,10 @@ resource "aws_lb_target_group" "searo_tf_httpd" {
   target_type = "ip"
   vpc_id      = aws_vpc.app_vpc.id
 
-#   health_check {
-#     enabled = true
-#     path    = "/health"
-#   }
+  health_check {
+    enabled = true
+    path    = "/"
+  }
 
   depends_on = [aws_alb.searo_tf_httpd]
 }

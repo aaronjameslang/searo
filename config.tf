@@ -73,6 +73,12 @@ resource "aws_ecs_task_definition" "searo-tf-httpd" {
           "awslogs-group": "/ecs/searo-tf-httpd",
           "awslogs-stream-prefix": "ecs"
         }
+      },
+      "healthCheck": {
+        "command": [
+          "CMD",
+          "(wget -O - localhost:3000 | grep html) || exit 1"
+        ]
       }
     }
   ]
