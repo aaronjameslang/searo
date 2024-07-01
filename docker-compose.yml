@@ -15,8 +15,8 @@ services:
       - "3000:3000"
     container_name: recipe-book-ui
     stdin_open: true
-    volumes:
-       - ./ui:/usr/src/app/ui
-       - /usr/src/app/ui/node_modules
+    # volumes:
+    #    - ./ui:/usr/src/app/ui
+    #    - /usr/src/app/ui/node_modules
 
 ######## Other containers #########

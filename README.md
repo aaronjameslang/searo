@@ -100,3 +100,4 @@ Functional and non-functional considerations before this goes to production
 - Set up healthchecks on the servers, and configure AWS
 - Review VPC & network config for security best practices
 - Get cypress running on CI
+- Review best practices for including files as volumes in dev and with COPY for prod
